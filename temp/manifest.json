@@ -1,0 +1,72 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.13/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.13",
+  "id": "6916c520-08ca-11ee-a2b7-c3ec23f35024",
+  "version": "0.0.1",
+  "packageName": "yobot",
+  "developer": {
+    "name": "frankqianms",
+    "websiteUrl": "https://4c70-2404-f801-9000-1a-8c3c-81c1-3349-1915.ngrok-free.app",
+    "privacyUrl": "https://4c70-2404-f801-9000-1a-8c3c-81c1-3349-1915.ngrok-free.app/privacy.html",
+    "termsOfUseUrl": "https://4c70-2404-f801-9000-1a-8c3c-81c1-3349-1915.ngrok-free.app/tou.html"
+  },
+  "name": {
+    "short": "yobot",
+    "full": "yobot"
+  },
+  "description": {
+    "short": "TODO: add short description here",
+    "full": "TODO: add full description here"
+  },
+  "icons": {
+    "outline": "icon-outline.png",
+    "color": "icon-color.png"
+  },
+  "accentColor": "#D85028",
+  "configurableTabs": [],
+  "staticTabs": [],
+  "bots": [
+    {
+      "botId": "4d7dcaec-33c5-4251-8dcc-a4920dbbcdb9",
+      "needsChannelSelector": true,
+      "isNotificationOnly": false,
+      "scopes": [
+        "team",
+        "personal",
+        "groupchat"
+      ],
+      "commandLists": [
+        {
+          "scopes": [
+            "team",
+            "personal"
+          ],
+          "commands": [
+            {
+              "title": "Help",
+              "description": "Shows help information"
+            },
+            {
+              "title": "Who am I?",
+              "description": "Shows information about your Teams user"
+            },
+            {
+              "title": "Mention me",
+              "description": "Let the bot @mention you"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "connectors": [],
+  "composeExtensions": [],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "4c70-2404-f801-9000-1a-8c3c-81c1-3349-1915.ngrok-free.app"
+  ],
+  "showLoadingIndicator": false
+}

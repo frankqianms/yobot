@@ -11,8 +11,7 @@
                 "Start local tunnel",
                 "gulp serve",
                 "Provision",
-                "Deploy",
-                // "Start application"
+                "Deploy"
             ],
             "dependsOrder": "sequence"
         },
@@ -57,15 +56,6 @@
             },
             "isBackground": true,
             "problemMatcher": "$teamsfx-local-tunnel-watch"
-        },
-        {
-            "label": "env replace",
-            "type": "process",
-            "command": "echo",
-            "args": [
-                "::set-teamsfx-env PUBLIC_HOSTNAME=${{BOT_DOMAIN}}",
-                "::set-teamsfx-env BOT_ENDPOINT=https://${{BOT_DOMAIN}}/api/messages"
-            ],
         },
         {
             // Create the debug resources.
@@ -119,30 +109,6 @@
             "options": {
                 "cwd": "${workspaceFolder}"
             },
-        },
-        {
-            "label": "Start application",
-            "type": "shell",
-            "command": "npm run dev:teamsfx",
-            "isBackground": true,
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": {
-                "pattern": [
-                    {
-                        "regexp": "^.*$",
-                        "file": 0,
-                        "location": 1,
-                        "message": 2
-                    }
-                ],
-                "background": {
-                    "activeOnStart": true,
-                    "beginsPattern": "[nodemon] starting",
-                    "endsPattern": "restify listening to|Bot/ME service listening at|[nodemon] app crashed"
-                }
-            }
         }
     ],
     "inputs": [

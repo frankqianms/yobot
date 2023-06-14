@@ -1,14 +1,14 @@
 {
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.13/MicrosoftTeams.schema.json",
   "manifestVersion": "1.13",
-  "id": "{{APPLICATION_ID}}",
-  "version": "{{VERSION}}",
-  "packageName": "{{PACKAGE_NAME}}",
+  "id": "${{APPLICATION_ID}}",
+  "version": "1.0.0",
+  "packageName": "${{PACKAGE_NAME}}",
   "developer": {
     "name": "frankqianms",
-    "websiteUrl": "https://{{PUBLIC_HOSTNAME}}",
-    "privacyUrl": "https://{{PUBLIC_HOSTNAME}}/privacy.html",
-    "termsOfUseUrl": "https://{{PUBLIC_HOSTNAME}}/tou.html"
+    "websiteUrl": "https://${{PUBLIC_HOSTNAME}}",
+    "privacyUrl": "https://${{PUBLIC_HOSTNAME}}/privacy.html",
+    "termsOfUseUrl": "https://${{PUBLIC_HOSTNAME}}/tou.html"
   },
   "name": {
     "short": "yobot",
@@ -27,7 +27,7 @@
   "staticTabs": [],
   "bots": [
     {
-      "botId": "{{MICROSOFT_APP_ID}}",
+      "botId": "${{MICROSOFT_APP_ID}}",
       "needsChannelSelector": true,
       "isNotificationOnly": false,
       "scopes": [
@@ -65,6 +65,8 @@
     "identity",
     "messageTeamMembers"
   ],
-  "validDomains": [],
+  "validDomains": [
+    "${{PUBLIC_HOSTNAME}}"
+  ],
   "showLoadingIndicator": false
 }

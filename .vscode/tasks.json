@@ -9,9 +9,10 @@
             "dependsOn": [
                 "Validate prerequisites",
                 "Start local tunnel",
-                "gulp serve",
                 "Provision",
-                "Deploy"
+                "Deploy",
+                "gulp manifest",
+                "gulp serve"
             ],
             "dependsOrder": "sequence"
         },
@@ -85,8 +86,7 @@
                 "${workspaceFolder}/node_modules/gulp/bin/gulp.js",
                 "serve",
                 "--nobrowser",
-                "--verbose",
-                "--env .env.local"
+                "--verbose"
             ],
             "problemMatcher": [
                 {

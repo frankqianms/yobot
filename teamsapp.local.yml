@@ -29,7 +29,6 @@ provision:
       botId: MICROSOFT_APP_ID
       # The Azure Active Directory application's client secret created for bot.
       botPassword: SECRET_BOT_PASSWORD
-
   # Create or update the bot registration on dev.botframework.com
   - uses: botFramework/create
     with:
@@ -40,32 +39,32 @@ provision:
       channels:
         - name: msteams
 
-  # Validate using manifest schema
-  - uses: teamsApp/validateManifest
-    with:
-      # Path to manifest template
-      manifestPath: ./appPackage/manifest.json
+  # # Validate using manifest schema
+  # - uses: teamsApp/validateManifest
+  #   with:
+  #     # Path to manifest template
+  #     manifestPath: ./appPackage/manifest.json
 
-  # Build Teams app package with latest env value
-  - uses: teamsApp/zipAppPackage
-    with:
-      # Path to manifest template
-      manifestPath: ./appPackage/manifest.json
-      outputZipPath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
-      outputJsonPath: ./appPackage/build/manifest.${{TEAMSFX_ENV}}.json
-  # Validate app package using validation rules
-  - uses: teamsApp/validateAppPackage
-    with:
-      # Relative path to this file. This is the path for built zip file.
-      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+  # # Build Teams app package with latest env value
+  # - uses: teamsApp/zipAppPackage
+  #   with:
+  #     # Path to manifest template
+  #     manifestPath: ./appPackage/manifest.json
+  #     outputZipPath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+  #     outputJsonPath: ./appPackage/build/manifest.${{TEAMSFX_ENV}}.json
+  # # Validate app package using validation rules
+  # - uses: teamsApp/validateAppPackage
+  #   with:
+  #     # Relative path to this file. This is the path for built zip file.
+  #     appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
 
-  # Apply the Teams app manifest to an existing Teams app in
-  # Teams Developer Portal.
-  # Will use the app id in manifest file to determine which Teams app to update.
-  - uses: teamsApp/update
-    with:
-      # Relative path to this file. This is the path for built zip file.
-      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+  # # Apply the Teams app manifest to an existing Teams app in
+  # # Teams Developer Portal.
+  # # Will use the app id in manifest file to determine which Teams app to update.
+  # - uses: teamsApp/update
+  #   with:
+  #     # Relative path to this file. This is the path for built zip file.
+  #     appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
 
 deploy:
   # Run npm command
@@ -73,10 +72,10 @@ deploy:
     with:
       args: install --no-audit
 
-  # Generate runtime environment variables
   - uses: file/createOrUpdateEnvironmentFile
     with:
-      target: ./.localConfigs
+      target: ./.env
       envs:
-        BOT_ID: ${{MICROSOFT_APP_ID}}
-        BOT_PASSWORD: ${{SECRET_BOT_PASSWORD}}
+        MICROSOFT_APP_ID: ${{MICROSOFT_APP_ID}}
+        MICROSOFT_APP_PASSWORD: ${{SECRET_BOT_PASSWORD}}
+        PUBLIC_HOSTNAME: ${{BOT_DOMAIN}}
